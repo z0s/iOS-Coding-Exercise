@@ -6,7 +6,7 @@
 //  Copyright © 2017 Zubair. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class APIManager {
     
@@ -35,7 +35,7 @@ class APIManager {
             }
             
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                displayError("Your request reutrned a status code other than 2xx!")
+                displayError("Your request returned a status code other than 2xx!")
                 return
             }
             
@@ -63,4 +63,26 @@ class APIManager {
         task.resume()
     }
     
+    func requestImage(at imageURL: URL, completion: @escaping ((UIImage?) -> Void)) {
+        let imageDownloadTask = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, response, error) in
+            var image: UIImage? = nil
+            
+            func displayError(_ error: String) {
+                print(error)
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                displayError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            if let imageData = data {
+                image = UIImage(data: imageData)
+            }
+            DispatchQueue.main.async {
+                completion(image)
+            }
+        })
+        imageDownloadTask.resume()
+    }
 }
