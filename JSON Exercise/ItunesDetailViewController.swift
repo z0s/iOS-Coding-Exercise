@@ -13,13 +13,14 @@ import AVKit
 class ItunesDetailViewController: UIViewController {
     
     var track:Track?
+    var apiManager = APIManager.shared
     
     override func loadView() {
-        addSubviews()
+        view = UIView()
+        setupSubviews()
     }
     
-    func addSubviews() {
-        view = UIView()
+    func setupSubviews() {
         view.backgroundColor = .white
         setTitle()
         setupImageView()
@@ -44,9 +45,11 @@ class ItunesDetailViewController: UIViewController {
         
         if let imageURLString: String = track?.artworkUrl100 {
             if let imageURL = URL(string: imageURLString) {
-                if let imageData = try? Data(contentsOf: imageURL) {
-                    imageView.image = UIImage(data: imageData)
-                }
+                apiManager.requestImage(at: imageURL, completion: { (image) in
+                    if let image = image {
+                        self.imageView.image = image
+                    }
+                })
             }
         }
     }

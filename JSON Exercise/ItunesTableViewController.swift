@@ -14,12 +14,14 @@ class ItunesTableViewController: UIViewController {
     var apiManager = APIManager.shared
     
     override func loadView() {
+        view = UIView()
+        setupSubviews()
         populateTableview()
-        setupView()
+        
     }
     
     func populateTableview() {
-        APIManager.shared.retrieveItunesObjects { (objects) in
+        apiManager.retrieveItunesObjects { (objects) in
             self.results = objects
             if self.results.count > 0 {
                 DispatchQueue.main.async {
@@ -29,8 +31,7 @@ class ItunesTableViewController: UIViewController {
         }
     }
     
-    func setupView() {
-        view = UIView()
+    func setupSubviews() {
         view.backgroundColor = .white
         title = "Michael Jackson"
         setupTableView()
@@ -75,9 +76,11 @@ extension ItunesTableViewController: UITableViewDataSource {
         // Artwork Image View
         if let imageURLString: String = item.artworkUrl60 {
             if let imageURL = URL(string: imageURLString) {
-                if let imageData = try? Data(contentsOf: imageURL) {
-                    cell.artworkImageView.image = UIImage(data: imageData)
-                }
+                apiManager.requestImage(at: imageURL, completion: { (image) in
+                    if let image = image {
+                        cell.artworkImageView.image = image
+                    }
+                })
             }
         }
         cell.selectionStyle = .none
