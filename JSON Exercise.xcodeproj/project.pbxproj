@@ -11,6 +11,7 @@
 		3D10FCEB1ED9725F00F0E3EE /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10FCEA1ED9725F00F0E3EE /* APIManager.swift */; };
 		3D1BAF7E1EDA1CDD0020ED2D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1BAF7D1EDA1CDD0020ED2D /* Constants.swift */; };
 		3D1BAF801EDA51120020ED2D /* ItunesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1BAF7F1EDA51120020ED2D /* ItunesDetailViewController.swift */; };
+		3D346D001EDD9A3F0025C62A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D346CFF1EDD9A3F0025C62A /* Extensions.swift */; };
 		3D4EC5861ED901F700531E45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4EC5851ED901F700531E45 /* AppDelegate.swift */; };
 		3D4EC5881ED901F700531E45 /* ItunesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4EC5871ED901F700531E45 /* ItunesTableViewController.swift */; };
 		3D4EC58D1ED901F700531E45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D4EC58C1ED901F700531E45 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		3D10FCEA1ED9725F00F0E3EE /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		3D1BAF7D1EDA1CDD0020ED2D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D1BAF7F1EDA51120020ED2D /* ItunesDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItunesDetailViewController.swift; sourceTree = "<group>"; };
+		3D346CFF1EDD9A3F0025C62A /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3D4EC5821ED901F700531E45 /* JSON Exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JSON Exercise.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D4EC5851ED901F700531E45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D4EC5871ED901F700531E45 /* ItunesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesTableViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 				3D4EC5911ED901F700531E45 /* Info.plist */,
 				3D4EC58E1ED901F700531E45 /* LaunchScreen.storyboard */,
 				3D1BAF7D1EDA1CDD0020ED2D /* Constants.swift */,
+				3D346CFF1EDD9A3F0025C62A /* Extensions.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				3D4EC5861ED901F700531E45 /* AppDelegate.swift in Sources */,
 				3D4EC5981ED9140700531E45 /* Track.swift in Sources */,
 				3D1BAF7E1EDA1CDD0020ED2D /* Constants.swift in Sources */,
+				3D346D001EDD9A3F0025C62A /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
