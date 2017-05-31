@@ -25,8 +25,9 @@ class ItunesDetailViewController: UIViewController {
         setTitle()
         setupImageView()
         setupSampleButton()
-        setupSeeMoreButton()
+        setupAppleMusicButton()
         setupAlbumLabel()
+        gradientLayer()
     }
     
     func setTitle() {
@@ -63,13 +64,13 @@ class ItunesDetailViewController: UIViewController {
         
     }
     
-    func setupSeeMoreButton() {
-        view.addSubview(seeMoreButton)
-        seeMoreButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 70).isActive = true
-        seeMoreButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        seeMoreButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        seeMoreButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        
+    func setupAppleMusicButton() {
+        view.addSubview(seeInAppleMusicButton)
+        seeInAppleMusicButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 70).isActive = true
+        seeInAppleMusicButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        seeInAppleMusicButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        seeInAppleMusicButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        seeInAppleMusicButton.applyGradient([UIColor.blue, UIColor.magenta])
     }
     
     func setupAlbumLabel() {
@@ -81,12 +82,20 @@ class ItunesDetailViewController: UIViewController {
         albumLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
     }
+//    TODO: Gradient Colors
+//    fileprivate func gradientLayer() {
+//        let gradient = CAGradientLayer()
+//        gradient.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+//        gradient.colors = //
+//        gradient.locations = [0.0, 1.0]
+//        self.view.layer.insertSublayer(gradient, at: 0)
+//    }
     
     func handlePlay() {
         playDownload(track!)
     }
     
-    func seeInItunes() {
+    func seeInAppleMusic() {
         if let urlString = track?.trackViewURL?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
             if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url)
@@ -117,17 +126,21 @@ class ItunesDetailViewController: UIViewController {
     
     lazy var playAudioButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Listen", for: .normal)
+        button.setTitle("Listen Now", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handlePlay), for: .touchUpInside)
         return button
     }()
     
-    lazy var seeMoreButton: UIButton = {
+    lazy var seeInAppleMusicButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("See More", for: .normal)
+        button.clipsToBounds = true
+        button.tintColor = .white
+        button.layer.cornerRadius = 15
+        button.backgroundColor = .blue
+        button.setTitle("Listen in Apple Music", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(seeInItunes), for: .touchUpInside)
+        button.addTarget(self, action: #selector(seeInAppleMusic), for: .touchUpInside)
         return button
     }()
     
