@@ -27,7 +27,7 @@ class ItunesDetailViewController: UIViewController {
         setupSampleButton()
         setupAppleMusicButton()
         setupAlbumLabel()
-        gradientLayer()
+//        gradientLayer()
     }
     
     func setTitle() {
