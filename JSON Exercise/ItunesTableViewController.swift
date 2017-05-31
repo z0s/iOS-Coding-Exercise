@@ -83,7 +83,7 @@ extension ItunesTableViewController: UITableViewDataSource {
                 })
             }
         }
-        cell.selectionStyle = .none
+//        cell.selectionStyle = .none
         return cell
     }
 }
@@ -95,6 +95,7 @@ extension ItunesTableViewController: UITableViewDelegate {
         let vc = ItunesDetailViewController()
         vc.track = results[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
