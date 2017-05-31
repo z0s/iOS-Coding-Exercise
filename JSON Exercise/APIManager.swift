@@ -17,6 +17,7 @@ class APIManager {
         var trackResults = [Track]()
         let urlString =  "https://itunes.apple.com/search?term=Michael+jackson"
         let session = URLSession.shared
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         guard let url = URL(string: urlString) else {
             return print("url is returning an error.")
             
@@ -58,6 +59,9 @@ class APIManager {
             for track in trackArray {
                 trackResults.append(Track(trackName: track[Constants.APIResponseKeys.trackName] as? String, albumName: track[Constants.APIResponseKeys.albumName] as? String, artistName: track[Constants.APIResponseKeys.artistName] as? String, previewUrl: track[Constants.APIResponseKeys.audioURL] as? String, artworkUrl60: track[Constants.APIResponseKeys.artworkURL60] as? String, artworkUrl100: track[Constants.APIResponseKeys.artworkURL100] as? String, trackViewURL: track[Constants.APIResponseKeys.trackViewUrl] as? String))
             }
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
             completionHandler(trackResults)
         }
         task.resume()
@@ -66,7 +70,7 @@ class APIManager {
     func requestImage(at imageURL: URL, completion: @escaping ((UIImage?) -> Void)) {
         let imageDownloadTask = URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, response, error) in
             var image: UIImage? = nil
-            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             func displayError(_ error: String) {
                 print(error)
             }
@@ -80,6 +84,7 @@ class APIManager {
                 image = UIImage(data: imageData)
             }
             DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 completion(image)
             }
         })

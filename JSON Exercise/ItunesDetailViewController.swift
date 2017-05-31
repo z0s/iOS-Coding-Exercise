@@ -20,14 +20,19 @@ class ItunesDetailViewController: UIViewController {
         setupSubviews()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        seeInAppleMusicButton.applyGradient([Colors.customRed, Colors.customPurple, Colors.customBlue])
+        
+    }
+    
     func setupSubviews() {
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.customGray
         setTitle()
         setupImageView()
         setupSampleButton()
         setupAppleMusicButton()
         setupAlbumLabel()
-//        gradientLayer()
     }
     
     func setTitle() {
@@ -68,9 +73,8 @@ class ItunesDetailViewController: UIViewController {
         view.addSubview(seeInAppleMusicButton)
         seeInAppleMusicButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 70).isActive = true
         seeInAppleMusicButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        seeInAppleMusicButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        seeInAppleMusicButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         seeInAppleMusicButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        seeInAppleMusicButton.applyGradient([UIColor.blue, UIColor.magenta])
     }
     
     func setupAlbumLabel() {
@@ -82,15 +86,7 @@ class ItunesDetailViewController: UIViewController {
         albumLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
     }
-//    TODO: Gradient Colors
-//    fileprivate func gradientLayer() {
-//        let gradient = CAGradientLayer()
-//        gradient.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
-//        gradient.colors = //
-//        gradient.locations = [0.0, 1.0]
-//        self.view.layer.insertSublayer(gradient, at: 0)
-//    }
-    
+
     func handlePlay() {
         playDownload(track!)
     }
@@ -137,7 +133,6 @@ class ItunesDetailViewController: UIViewController {
         button.clipsToBounds = true
         button.tintColor = .white
         button.layer.cornerRadius = 15
-        button.backgroundColor = .blue
         button.setTitle("Listen in Apple Music", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(seeInAppleMusic), for: .touchUpInside)

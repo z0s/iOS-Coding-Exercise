@@ -25,6 +25,7 @@ class ItunesTableViewController: UIViewController {
             self.results = objects
             if self.results.count > 0 {
                 DispatchQueue.main.async {
+
                     self.tableView.reloadData()
                 }
             }
